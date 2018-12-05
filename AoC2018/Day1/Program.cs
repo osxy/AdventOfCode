@@ -12,14 +12,14 @@ namespace Day1
         static void Main(string[] args)
         {
             // Do JIT compilation
-            partOne();
-            partTwo();
+            PartOne();
+            PartTwo();
             Console.Clear();
 
             Stopwatch watch = Stopwatch.StartNew();
             Console.WriteLine("Day One - Part One");
             watch.Restart();
-            partOne();
+            PartOne();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
@@ -27,7 +27,7 @@ namespace Day1
 
             Console.WriteLine("Day One - Part Two");
             watch.Restart();
-            partTwo();
+            PartTwo();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
@@ -37,15 +37,15 @@ namespace Day1
         }
 
 
-        static void partTwo()
+        static void PartTwo()
         {
-            partTwoExecute(toIntegerList(realInputValues));
+            partTwoExecute(ToIntegerList(realInputValues));
         }
 
 
-        static void partOne()
+        static void PartOne()
         {
-            partOneExecute(toIntegerList(realInputValues));
+            PartOneExecute(ToIntegerList(realInputValues));
         }
 
 
@@ -96,7 +96,7 @@ namespace Day1
 
         }
 
-        static void partOneExecute(List<int> values)
+        static void PartOneExecute(List<int> values)
         {
             int value = 0;
             foreach (int input in values)
@@ -107,7 +107,7 @@ namespace Day1
         }
 
 
-        static List<int> toIntegerList(string[] values)
+        static List<int> ToIntegerList(string[] values)
         {
 
             List<int> intValues = new List<int>();
@@ -126,7 +126,7 @@ namespace Day1
 
 
         //Inputs
-        static string[] inputValuesTest1 = new string[]
+        static readonly string[] inputValuesTest1 = new string[]
         {
             "+1",
             "+1",
@@ -135,21 +135,21 @@ namespace Day1
             "-3"
         };
 
-        static string[] inputValuesTest2 = new string[]
+        static readonly string[] inputValuesTest2 = new string[]
         {
             "+1",
             "+1",
             "-2"
         };
 
-        static string[] inputValuesTest3 = new string[]
+        static readonly string[] inputValuesTest3 = new string[]
         {
             "-1",
             "-2",
             "-3"
         };
 
-        static string[] realInputValues = new string[]
+        static readonly string[] realInputValues = new string[]
         {
             "+16",
             "-2",
