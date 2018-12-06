@@ -103,7 +103,7 @@ namespace AoC2018.Days
                     // Alleen verwerken als string niet gelijk is
                     if (a != b)
                     {
-                        var diff = CompareCharactersInStrings(a, b);
+                        var diff = Helpers.StringsAndInts.CompareCharactersInStrings(a, b);
                         // Als er nog geen minFoundDiff is of de minFoundDiff is groter dan nieuwe gevonden diff
                         if (minFoundDiff.Item1 > diff.Item1 || minFoundDiff.Item1 == 0)
                         {
