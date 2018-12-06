@@ -13,10 +13,13 @@ namespace AoC2018
         {
             Console.Clear();
 
+            Console.WriteLine("Advent Of Code 2018");
+            Console.WriteLine("by André K.");
+            Console.WriteLine("");
 
             var menu = new EasyConsole.Menu()
-              .Add("Day 1", () => Days.Day1.execute())
-              .Add("Day 2", () => Days.Day2.execute());
+                .Add("Day 1", () => Days.Day1.execute())
+                .Add("Day 2", () => Days.Day2.execute());
             menu.Display();
 
         }
