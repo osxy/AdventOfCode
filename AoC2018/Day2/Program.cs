@@ -17,6 +17,7 @@ namespace Day2
             PartTwo();
             Console.Clear();
 
+
             Stopwatch watch = Stopwatch.StartNew();
             Console.WriteLine("Day Two - Part One");
             watch.Restart();
@@ -49,7 +50,7 @@ namespace Day2
         static void PartTwo()
         {
 
-            ExecutePartTwo(inputValuesTest1);
+            ExecutePartTwo(realInputValues);
 
         }
 
@@ -57,9 +58,9 @@ namespace Day2
         static void ExecutePartTwo(string[] input)
         {
 
-            int forcount = 1;
-            var letters = new Dictionary<string, int>();
-            var matchingString = new Dictionary<int, string>();
+            var letters = new Dictionary<string, Int16>();
+            var matchingString = new List<string>();
+            var minFoundDiff = new Tuple<int, string>(0,"");
 
 
             // Loop door elke string heen
@@ -70,33 +71,50 @@ namespace Day2
 
                 foreach (string character in value.ToCharArray().Select(c => c.ToString()).ToArray())
                 {
-
-
                     if (letters.ContainsKey(character))
                     {
-
                         letters[character] += 1;
-
                     }
                     else
                     {
-
                         letters.Add(character, 1);
+                    }
+                }
 
+                // Als er één van de letters 2 of 3 keer voorkomt toevoegen aan de matchingstring list
+                if (letters.ContainsValue(3) || letters.ContainsValue(2))
+                {
+                    matchingString.Add(value);
+                }
+
+            }
+
+            // Loop door elke string heen met 2x / 3x zelfde letter
+            foreach (string a in matchingString)
+            {
+
+                // Loop door elke string heen met 2x / 3x zelfde letter om a te vergelijken met elke andere waarde in de array
+                foreach (string b in matchingString)
+                {
+                    // Alleen verwerken als string niet gelijk is
+                    if (a != b)
+                    {
+                        var diff = CompareStrings(a, b);
+                        // Als er nog geen minFoundDiff is of de minFoundDiff is groter dan nieuwe gevonden diff
+                        if (minFoundDiff.Item1 > diff.Item1 || minFoundDiff.Item1 == 0)
+                        {
+                            minFoundDiff = diff;
+                            //Console.WriteLine(diff.Item2);
+                            //Console.WriteLine(a);
+                            //Console.WriteLine(b);
+                        }
+                        
                     }
 
                 }
 
-                // Als er een letter is gevonden welke exact 3x voorkomen tel dan 1 op bij 3xcounter
-                if (letters.ContainsValue(3) || letters.ContainsValue(2))
-                {
-                    matchingString.Add(forcount, value);
-
-                }
-
-                ++forcount;
-
             }
+            Console.WriteLine(minFoundDiff.Item2);
 
         }
 
@@ -158,6 +176,37 @@ namespace Day2
 
         }
 
+        static Tuple<int, string> CompareStrings(string a, string b)
+        {
+            int diff = 0;
+            string remainingString = "";
+
+            // Zet a om in een Char Array
+            var ArrayA = new string[0];
+            ArrayA = a.ToCharArray().Select(c => c.ToString()).ToArray();
+
+            // Zet b om in een Char Array
+            var ArrayB = new string[0];
+            ArrayB = b.ToCharArray().Select(c => c.ToString()).ToArray();
+
+            for (int i = 0; i < ArrayA.Count(); i++)
+            {
+
+                // Als character op positie i in a en b niet gelijk is tel dan 1 op bij de diff counter
+                if (ArrayA[i] != ArrayB[i])
+                {
+                    diff += 1;
+
+                } else { // Als het character op positie i in a en b gelijk is bouw dan de nieuwe return string op
+
+                    remainingString = remainingString + ArrayA[i];
+
+                }
+            }
+
+            return Tuple.Create(diff, remainingString);
+        }
+
         //Inputs
         static readonly string[] inputValuesTest1 = new string[]
         {
@@ -170,6 +219,13 @@ namespace Day2
             "abcdefg" // geen
         };
 
+        static readonly string[] inputValuesTest2 = new string[]
+        {
+            "qwugbihrkplyzcjahefttvdzns",
+            "qwugbihrkppzzcjahefttvdzns",
+            "qwugbihrkppzzzjahefttvdzns",
+            "qwugbihrkplyzcjaheftttdzns"
+        };
 
         static readonly string[] realInputValues = new string[]
         {
