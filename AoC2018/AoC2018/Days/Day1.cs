@@ -5,18 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day1
+namespace AoC2018.Days
 {
+
     class Day1
     {
-        static void Main(string[] args)
+        public static void execute()
         {
             // Do JIT compilation
+            Console.Clear();
+            Console.WriteLine("Start JIT compilation");
             PartOne();
             PartTwo();
             Console.Clear();
 
             Stopwatch watch = Stopwatch.StartNew();
+            Console.WriteLine("Start work on Day One");
             Console.WriteLine("Day One - Part One");
             watch.Restart();
             PartOne();
@@ -31,21 +35,21 @@ namespace Day1
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
-            //Keep console open untill any value is returned
-            Console.ReadLine();
+            //Present back to main window
+            Program.BackToMain();
 
         }
 
 
         static void PartTwo()
         {
-            partTwoExecute(ToIntegerList(realInputValues));
+            partTwoExecute(Helpers.ArraysAndLists.StringArrayToIntList(realInputValues));
         }
 
 
         static void PartOne()
         {
-            PartOneExecute(ToIntegerList(realInputValues));
+            PartOneExecute(Helpers.ArraysAndLists.StringArrayToIntList(realInputValues));
         }
 
 
@@ -60,9 +64,9 @@ namespace Day1
             resultsList.Add(0);
 
 
-            while (found == false && loopcount <=500)
+            while (found == false && loopcount <= 500)
             {
-                
+
 
                 //Start loop trough input list
                 foreach (int input in values)
@@ -106,23 +110,6 @@ namespace Day1
             Console.WriteLine(value);
         }
 
-
-        static List<int> ToIntegerList(string[] values)
-        {
-
-            List<int> intValues = new List<int>();
-
-            foreach (string input in values)
-            {
-
-                intValues.Add(Convert.ToInt32(input));
-
-            }
-
-            return intValues;
-
-
-        }
 
 
         //Inputs
@@ -1166,4 +1153,5 @@ namespace Day1
         };
 
     }
+
 }
