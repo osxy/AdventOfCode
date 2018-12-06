@@ -21,8 +21,10 @@ namespace AoC2018.Days
 
             Stopwatch watch = Stopwatch.StartNew();
             Console.WriteLine("Start work on Day One");
+            Console.WriteLine("");
             Console.WriteLine("Day One - Part One");
             watch.Restart();
+            Console.Write("Answer: ");
             PartOne();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
@@ -31,6 +33,7 @@ namespace AoC2018.Days
 
             Console.WriteLine("Day One - Part Two");
             watch.Restart();
+            Console.Write("Answer: ");
             PartTwo();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");

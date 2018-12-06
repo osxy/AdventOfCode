@@ -27,9 +27,8 @@ namespace AoC2018
             //Keep console open untill any value is returned
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("To go to main menu press enter");
-
-            Console.ReadLine();
+            
+            Input.ReadString("To go to main menu press enter");
             Main();
 
         }
