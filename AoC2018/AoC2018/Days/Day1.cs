@@ -58,13 +58,13 @@ namespace AoC2018.Days
 
         static void partTwoExecute(List<int> values)
         {
-            List<int> resultsList = new List<int>();
+            Dictionary<int,bool> resultsList = new Dictionary<int, bool>();
             bool found = false;
             int value = 0;
             int loopcount = 0;
 
             //Add with 0 frequency to results list
-            resultsList.Add(0);
+            resultsList.Add(0,true);
 
 
             while (found == false && loopcount <= 500)
@@ -81,7 +81,7 @@ namespace AoC2018.Days
 
                     //Check if result frequency is in results list already
                     //If found return duplicate result frequency
-                    if (resultsList.IndexOf(value) != -1)
+                    if (resultsList.ContainsKey(value))
                     {
 
                         Console.WriteLine(value);
@@ -91,7 +91,7 @@ namespace AoC2018.Days
                     }
 
                     //Add every resulting value to results list 
-                    resultsList.Add(value);
+                    resultsList.Add(value, true);
 
                 }
                 if (found == false)
