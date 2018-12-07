@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using AoC2018.Helpers;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,7 +36,6 @@ namespace AoC2018.Days
             Console.WriteLine("Day Three - Part Two");
             watch.Restart();
             Console.Write("Answer: ");
-            Console.WriteLine("Does not work yet.");
             PartTwo();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
@@ -63,8 +63,14 @@ namespace AoC2018.Days
         static void ExecutePartTwo(string[] input)
         {
 
-            
+            var resultsList = GetFullClaims(input);
 
+            var AllFullSquares = from kvp in resultsList
+                                      where kvp.Value == true
+                                      select kvp;
+
+            // Print de full square ID
+            Console.WriteLine(AllFullSquares.First().Key);
 
 
         }
@@ -72,10 +78,28 @@ namespace AoC2018.Days
         static void ExecutePartOne(string[] input)
         {
 
-            // Maak leeg grid aan
-            string[,] grid = new string[1000,1000];
 
-            List<string> resultsList = new List<string>();
+            var resultsList = GetUniquenessOfClaims(input);
+
+            var AllDuplicateSquares = from kvp in resultsList
+                                        where kvp.Value == false
+                                        select kvp;
+
+            // Tel aantal dubbele claims
+            Console.WriteLine(AllDuplicateSquares.Count());
+            
+
+        }
+
+
+        static Dictionary<string, bool> GetUniquenessOfClaims(string[] input)
+        {
+
+
+            // Maak leeg grid aan
+            string[,] grid = new string[1000, 1000];
+
+            Dictionary<string, bool> resultsList = new Dictionary<string, bool>(); // ID , unique value
 
             int elf = 0;
             int startX = 0;
@@ -110,15 +134,23 @@ namespace AoC2018.Days
 
 
                         // Als er meer dan 1 claim op vakje ligt en vakje staat nog niet in lijst voeg hem dan toe
-                        if (grid[currentX, currentY] != null  && resultsList.IndexOf(currentX + "," + currentY) == -1)
+                        if (grid[currentX, currentY] != null)
                         {
 
-                            resultsList.Add(currentX + "," + currentY);
+                            // Als de waarde nog niet op false staat zet hem dan op false (niet uniek)
+                            if (resultsList[currentX + "," + currentY] == true)
+                            {
+                                resultsList[currentX + "," + currentY] = false;
+                            }
 
-                        } else
+                        }
+                        else // Als het een nieuwe claim is voeg hem dan toe als unieke waarde
                         {
 
+
+                            resultsList.Add(currentX + "," + currentY, true);
                             grid[currentX, currentY] = "#" + elf;
+
 
                         }
 
@@ -128,13 +160,89 @@ namespace AoC2018.Days
 
 
             }
-
-            // Tel aantal dubbele claims
-            Console.WriteLine(resultsList.Count);
-
+            return resultsList;
 
         }
 
+
+        static Dictionary<int, bool> GetFullClaims(string[] input)
+        {
+
+
+            // Maak leeg grid aan
+            int[,] grid = new int[1000, 1000];
+
+            Dictionary<int, bool> resultsList = new Dictionary<int, bool>(); // ID , not interupted
+
+            int elf = 0;
+            int startX = 0;
+            int startY = 0;
+            int width = 0;
+            int height = 0;
+            int currentX = 0;
+            int currentY = 0;
+
+            foreach (string value in input)
+            {
+
+                // Split de data
+                int[] data = Array.ConvertAll(value.Split(new char[] { '#', ' ', '@', ',', ':', 'x' }, StringSplitOptions.RemoveEmptyEntries), int.Parse);
+
+                // Voor leesbaarheid variabelen
+                elf = data[0];
+                startX = data[1];
+                startY = data[2];
+                width = data[3];
+                height = data[4];
+
+                resultsList.Add(elf, true);
+
+
+                // Teken het vak
+                for (int i = 0; i < width; i++)
+                {
+
+                    for (int z = 0; z < height; z++)
+                    {
+
+                        currentX = startX + i;
+                        currentY = startY + z;
+
+
+                        // Als er meer dan 1 claim op vakje ligt en vakje staat nog niet in lijst voeg hem dan toe
+                        if (grid[currentX, currentY] != 0)
+                        {
+
+                            // Als de waarde van huidige loop nog niet op false staat zet hem dan op false (niet volledig)
+                            if (resultsList[elf] == true)
+                            {
+                                resultsList[elf] = false;
+                            }
+
+                            // Als de waarde van de reeds geplaatste waarde in het grid nog niet op false staat zet hem dan op false (niet volledig)
+                            if (resultsList[grid[currentX, currentY]] == true)
+                            {
+                                resultsList[grid[currentX, currentY]] = false;
+                            }
+
+
+                        }
+                        else // Als het een nieuwe claim is voeg hem dan toe als unieke waarde
+                        {
+
+                            grid[currentX, currentY] = elf;
+
+                        }
+
+                    }
+
+                }
+
+
+            }
+            return resultsList;
+
+        }
 
         //Inputs
         static readonly string[] inputValuesTest1 = new string[]

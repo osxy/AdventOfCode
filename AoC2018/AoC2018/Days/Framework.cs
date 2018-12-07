@@ -26,7 +26,6 @@ namespace AoC2018.Days
             Console.WriteLine("Day x - Part One");
             watch.Restart();
             Console.Write("Answer: ");
-            Console.WriteLine("Does not work yet.");
             PartOne();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
@@ -36,7 +35,6 @@ namespace AoC2018.Days
             Console.WriteLine("Day x - Part Two");
             watch.Restart();
             Console.Write("Answer: ");
-            Console.WriteLine("Does not work yet.");
             PartTwo();
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
@@ -64,12 +62,14 @@ namespace AoC2018.Days
         static void ExecutePartTwo(string[] input)
         {
 
+            Console.WriteLine("Does not work yet.");
 
         }
 
         static void ExecutePartOne(string[] input)
         {
 
+            Console.WriteLine("Does not work yet.");
 
         }
 
