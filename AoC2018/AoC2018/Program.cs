@@ -20,7 +20,8 @@ namespace AoC2018
             var menu = new EasyConsole.Menu()
                 .Add("Day 1", () => Days.Day1.execute())
                 .Add("Day 2", () => Days.Day2.execute())
-                .Add("Day 3 - WIP", () => Days.Day3.execute());
+                .Add("Day 3", () => Days.Day3.execute())
+                .Add("Day 4 - WIP", () => Days.Day4.execute());
             menu.Display();
 
         }

@@ -68,9 +68,11 @@
   <ItemGroup>
     <Compile Include="Days\Day1.cs" />
     <Compile Include="Days\Day2.cs" />
+    <Compile Include="Days\Day4.cs" />
     <Compile Include="Days\Framework.cs" />
     <Compile Include="Days\Day3.cs" />
     <Compile Include="Helpers\ArraysAndLists.cs" />
+    <Compile Include="Helpers\General.cs" />
     <Compile Include="Helpers\StringsAndInts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +80,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Input\Day4_RealData.txt" />
+    <Content Include="Input\Day4_TestData.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

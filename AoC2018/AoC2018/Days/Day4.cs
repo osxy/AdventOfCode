@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AoC2018.Days
 {
 
-    class Framework
+    class Day4
     {
 
         public static void execute()
@@ -16,12 +16,11 @@ namespace AoC2018.Days
 
             //Input filenames
             string realInputFile = "Day4_TestData.txt";
-            string test1InputFile = "Day4_RealData.txt";
+            string test1InputFile = "Day4_TestData.txt";
 
             //Get input contents
             var realInputValues = Helpers.General.GetDataFromInputFile(realInputFile);
             var test1InputValues = Helpers.General.GetDataFromInputFile(test1InputFile);
-
 
 
             // Do JIT compilation
@@ -84,6 +83,27 @@ namespace AoC2018.Days
 
         }
 
+
+        //Inputs
+        static readonly string[] inputValuesTest1 = new string[]
+        {
+            
+        };
+
+        static readonly string[] inputValuesTest2 = new string[]
+        {
+            "qwugbihrkplyzcjahefttvdzns",
+            "qwugbihrkppzzcjahefttvdzns",
+            "qwugbihrkppzzzjahefttvdzns",
+            "qwugbihrkplyzcjaheftttdzns"
+        };
+
+        static readonly string[] realInputValues = new string[]
+        {
+            "qwubbihrkplymcraxefntvdzns",
+            "qwugbihrkplyzcjahefttvdzns",
+            "qwugbihrkplymcjoxrsotvdzns"
+        };
 
 
     }
