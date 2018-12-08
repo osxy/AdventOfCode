@@ -44,5 +44,11 @@ namespace AoC2018.Helpers
             return Tuple.Create(diff, remainingString);
         }
 
+
+        static public int ConvertStringToInt(string intString)
+        {
+            int i = 0;
+            return (Int32.TryParse(intString, out i) ? i : (int)0);
+        }
     }
 }
