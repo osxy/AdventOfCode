@@ -21,6 +21,20 @@ namespace AoC2018.Helpers
 
         }
 
+        static public string GetDataFromInputFileAsString(string filename)
+        {
+
+            var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var filelocation = Path.Combine(projectFolder, @"Input\", filename);
+
+
+            string contents = System.IO.File.ReadAllText(filelocation);
+
+
+            return contents;
+
+        }
+
 
 
     }
