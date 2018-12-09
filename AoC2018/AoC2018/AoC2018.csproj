@@ -69,6 +69,7 @@
     <Compile Include="Days\Day1.cs" />
     <Compile Include="Days\Day2.cs" />
     <Compile Include="Days\Day4.cs" />
+    <Compile Include="Days\Day7.cs" />
     <Compile Include="Days\Framework.cs" />
     <Compile Include="Days\Day3.cs" />
     <Compile Include="Days\Day5.cs" />
@@ -83,6 +84,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Input\Day7_TestData.txt" />
+    <Content Include="Input\Day7_RealData.txt" />
     <Content Include="Input\Day5_RealData.txt" />
     <Content Include="Input\Day4_RealData.txt" />
     <Content Include="Input\Day5_TestData.txt" />

@@ -22,7 +22,9 @@ namespace AoC2018
                 .Add("Day 2", () => Days.Day2.execute())
                 .Add("Day 3", () => Days.Day3.execute())
                 .Add("Day 4", () => Days.Day4.execute())
-                .Add("Day 5", () => Days.Day5.execute());
+                .Add("Day 5", () => Days.Day5.execute())
+                .Add("Day 6", () => ThereIsNoDay6())
+                .Add("Day 7", () => Days.Day7.execute());
             menu.Display();
 
         }
@@ -36,6 +38,14 @@ namespace AoC2018
             
             Input.ReadString("To go to main menu press enter");
             Main();
+
+        }
+
+        public static void ThereIsNoDay6()
+        {
+            Console.Clear();
+            Console.WriteLine("There is no day 6");
+            BackToMain();
 
         }
 
