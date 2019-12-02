@@ -28,6 +28,34 @@ namespace AoC2019.Helpers
 
         }
 
+        // Zet String om in String[]
+        // Output: String[]
+        public static String[] StringToStringArray(string value, char delimiter)
+        {
+
+            string[] outputArray = value.Split(delimiter);
+            return outputArray;
+
+        }
+
+        // Zet String om in String[]
+        // Output: String[]
+        public static int[] StringToIntArray(string value, char delimiter)
+        {
+
+            string[] inputArray = value.Split(delimiter);
+            List<int> outputList = new List<int>();
+            foreach (string x in inputArray)
+            {
+
+                outputList.Add(Convert.ToInt32(x));
+
+            }
+            int[] outputArray = outputList.ToArray();
+            return outputArray;
+
+        }
+
 
     }
 }
