@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AoC2020.Helpers;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -71,12 +73,15 @@ namespace AoC2020.Days
 
         public static int ExecutePartTwo(string[] input)
         {
-            var array = Helpers.ArraysAndLists.StringArrayToIntArray(input);
+            var array = ArraysAndLists.StringArrayToIntArray(input);
+
             foreach (int current in array)
             {
-                foreach (int i in array)
+                var smallerList = array.Where(x => x <= 2020 - current).Select(x => x);
+                foreach (int i in smallerList)
                 {
-                    foreach (int j in array)
+                    var smallestList = array.Where(x => x <= 2020 - current - i).Select(x => x);
+                    foreach (int j in smallestList)
                     {
                         if (current + i + j == 2020)
                         {
@@ -93,7 +98,8 @@ namespace AoC2020.Days
             var array = Helpers.ArraysAndLists.StringArrayToIntArray(input);
             foreach(int current in array)
             {
-                foreach(int i in array)
+                var smallerList = array.Where(x => x <= 2020 - current).Select(x => x);
+                foreach (int i in smallerList)
                 {
                     if (current + i == 2020)
                     {
