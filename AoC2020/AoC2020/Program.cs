@@ -13,7 +13,7 @@ namespace AoC2020
         {
             Console.Clear();
 
-            Console.WriteLine("Advent Of Code 2019");
+            Console.WriteLine("Advent Of Code 2020");
             Console.WriteLine("by André K.");
             Console.WriteLine("");
 
