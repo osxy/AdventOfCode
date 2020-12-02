@@ -72,14 +72,14 @@ namespace AoC2020.Days
         {
 
             int validPasswords = 0;
-            var passwordMatch = new Regex("(\\d+)-(\\d+) (.): (.*)", RegexOptions.Compiled);
+            var passwordMatch = new Regex("(?<positionOne>\\d+)-(?<positionTwo>\\d+) (?<mandatoryLetter>.): (?<password>.*)", RegexOptions.Compiled);
             foreach (string i in input)
             {
                 var match = passwordMatch.Match(i);
-                int positionOne = int.Parse(match.Groups[1].Value);
-                int positionTwo = int.Parse(match.Groups[2].Value);
-                char mandatoryLetter = Convert.ToChar(match.Groups[3].Value);
-                var password = match.Groups[4].Value;
+                int positionOne = int.Parse(match.Groups["positionOne"].Value);
+                int positionTwo = int.Parse(match.Groups["positionTwo"].Value);
+                char mandatoryLetter = Convert.ToChar(match.Groups["mandatoryLetter"].Value);
+                var password = match.Groups["password"].Value;
 
                 if ((password[positionOne - 1] == mandatoryLetter) ^ (password[positionTwo - 1] == mandatoryLetter))
                 {
@@ -93,12 +93,12 @@ namespace AoC2020.Days
         public static int ExecutePartOne(string[] input)
         {
             int validPasswords = 0;
-            var passwordMatch = new Regex("(\\d+)-(\\d+) (.): (.*)", RegexOptions.Compiled);
+            var passwordMatch = new Regex("(?<positionOne>\\d+)-(?<positionTwo>\\d+) (?<mandatoryLetter>.): (?<password>.*)", RegexOptions.Compiled);
             foreach (string i in input)
             {
                 var match = passwordMatch.Match(i);
-                int count = match.Groups[4].Value.Count(c => c == Convert.ToChar(match.Groups[3].Value));
-                if(count >= int.Parse(match.Groups[1].Value) && count <= int.Parse(match.Groups[2].Value))
+                int count = match.Groups["password"].Value.Count(c => c == Convert.ToChar(match.Groups["mandatoryLetter"].Value));
+                if(count >= int.Parse(match.Groups["positionOne"].Value) && count <= int.Parse(match.Groups["positionTwo"].Value))
                 {
                     validPasswords++;
                 }
