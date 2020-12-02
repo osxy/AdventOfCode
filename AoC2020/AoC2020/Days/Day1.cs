@@ -16,8 +16,10 @@ namespace AoC2020.Days
         public static void Execute()
         {
 
+            var day = 1;
+
             //Input filenames
-            string realInputFile = "Day1_RealData.txt";
+            string realInputFile = $"Day{day}_RealData.txt";
 
             //Get input contents
             var realInputValues = Helpers.General.GetDataFromInputFile(realInputFile);
@@ -30,11 +32,10 @@ namespace AoC2020.Days
             PartTwo(realInputValues);
             Console.Clear();
 
-            // Run part one
             Stopwatch watch = Stopwatch.StartNew();
-            Console.WriteLine("Start work on Day 1");
+            Console.WriteLine($"Start work on Day {day}");
             Console.WriteLine("");
-            Console.WriteLine("Day 1 - Part One");
+            Console.WriteLine($"Day {day} - Part One");
             watch.Restart();
             Console.Write("Answer: ");
             PartOne(realInputValues);
@@ -43,8 +44,7 @@ namespace AoC2020.Days
 
             Console.WriteLine("");
 
-            // Run Part two
-            Console.WriteLine("Day 1 - Part Two");
+            Console.WriteLine($"Day {day} - Part Two");
             watch.Restart();
             Console.Write("Answer: ");
             PartTwo(realInputValues);
