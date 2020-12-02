@@ -81,9 +81,7 @@ namespace AoC2020.Days
                 char mandatoryLetter = Convert.ToChar(match.Groups[3].Value);
                 var password = match.Groups[4].Value;
 
-                bool ruleOne = password[positionOne - 1] == mandatoryLetter && password[positionTwo - 1] != mandatoryLetter;
-                bool ruleTwo = password[positionOne - 1] != mandatoryLetter && password[positionTwo - 1] == mandatoryLetter;
-                if (ruleOne != ruleTwo && (ruleOne || ruleTwo))
+                if ((password[positionOne - 1] == mandatoryLetter) ^ (password[positionTwo - 1] == mandatoryLetter))
                 {
                     validPasswords++;
                 }
