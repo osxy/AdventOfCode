@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AoC2020.Days
 {
 
-    public class Framework
+    public class Day2
     {
 
         public static void Execute()
         {
 
             //Input filenames
-            string realInputFile = "Day4_RealData.txt";
+            string realInputFile = "Day2_RealData.txt";
 
             //Get input contents
             var realInputValues = Helpers.General.GetDataFromInputFile(realInputFile);
@@ -66,19 +67,50 @@ namespace AoC2020.Days
 
         }
 
+
         public static int ExecutePartTwo(string[] input)
         {
-            return 0;
+
+            int validPasswords = 0;
+            var passwordMatch = new Regex("(\\d+)-(\\d+) (.): (.*)", RegexOptions.Compiled);
+            foreach (string i in input)
+            {
+                var match = passwordMatch.Match(i);
+                int positionOne = int.Parse(match.Groups[1].Value);
+                int positionTwo = int.Parse(match.Groups[2].Value);
+                char mandatoryLetter = Convert.ToChar(match.Groups[3].Value);
+                var password = match.Groups[4].Value;
+
+                bool ruleOne = password[positionOne - 1] == mandatoryLetter && password[positionTwo - 1] != mandatoryLetter;
+                bool ruleTwo = password[positionOne - 1] != mandatoryLetter && password[positionTwo - 1] == mandatoryLetter;
+                if (ruleOne != ruleTwo && (ruleOne || ruleTwo))
+                {
+                    validPasswords++;
+                }
+            }
+
+            return validPasswords;
         }
 
         public static int ExecutePartOne(string[] input)
         {
-
-            return 0;
+            int validPasswords = 0;
+            var passwordMatch = new Regex("(\\d+)-(\\d+) (.): (.*)", RegexOptions.Compiled);
+            foreach (string i in input)
+            {
+                var match = passwordMatch.Match(i);
+                int count = match.Groups[4].Value.Count(c => c == Convert.ToChar(match.Groups[3].Value));
+                if(count >= int.Parse(match.Groups[1].Value) && count <= int.Parse(match.Groups[2].Value))
+                {
+                    validPasswords++;
+                }
+            }
+            
+            return validPasswords;
         }
-
-
-
     }
 
+
+
 }
+

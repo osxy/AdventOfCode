@@ -18,7 +18,8 @@ namespace AoC2020
             Console.WriteLine("");
 
             var menu = new EasyConsole.Menu()
-                .Add("Day 1", () => Days.Day1.Execute());
+                .Add("Day 1", () => Days.Day1.Execute())
+                .Add("Day 2", () => Days.Day2.Execute());
             menu.Display();
 
         }
