@@ -1,4 +1,6 @@
-﻿namespace AoC2020.Days
+﻿using System;
+
+namespace AoC2020.Days
 {
 
     public class Day3 : IDays
@@ -16,13 +18,14 @@
 
         public static int ExecutePartTwo(string[] input)
         {
-            var slope1 = SlopeRunner(input, 1, 1);
-            var slope2 = SlopeRunner(input, 3, 1);
-            var slope3 = SlopeRunner(input, 5, 1);
-            var slope4 = SlopeRunner(input, 7, 1);
-            var slope5 = SlopeRunner(input, 1, 2);
+            var result = 1;
+            result *= SlopeRunner(input, 1, 1);
+            result *= SlopeRunner(input, 3, 1);
+            result *= SlopeRunner(input, 5, 1);
+            result *= SlopeRunner(input, 7, 1);
+            result *= SlopeRunner(input, 1, 2);
 
-            return slope1*slope2*slope3*slope4*slope5;
+            return result;
         }
 
         public static int ExecutePartOne(string[] input)
