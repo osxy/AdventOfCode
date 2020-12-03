@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AoC2020.Days;
 using EasyConsoleCore;
+using TextCopy;
 
 namespace AoC2020
 {
@@ -30,18 +31,6 @@ namespace AoC2020
             menu.Display();
         }
 
-        public static void BackToMain()
-        {
-
-            //Keep console open untill any value is returned
-            Console.WriteLine("");
-            Console.WriteLine("");
-            
-            Input.ReadString("To go to main menu press enter");
-            Main();
-
-        }
-
         public void ExecuteDay(IDays day, int daynr)
         {
             var realInputFile = $"Day{daynr}_RealData.txt";
@@ -59,7 +48,8 @@ namespace AoC2020
             Console.WriteLine($"Day {daynr} - Part One");
             watch.Restart();
             Console.Write("Answer: ");
-            Output.WriteLine(ConsoleColor.Red, day.PartOne(realInputValues));
+            var partOne = day.PartOne(realInputValues);
+            Output.WriteLine(ConsoleColor.Red, partOne);
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
@@ -68,12 +58,36 @@ namespace AoC2020
             Console.WriteLine($"Day {daynr} - Part Two");
             watch.Restart();
             Console.Write("Answer: ");
-            Output.WriteLine(ConsoleColor.Red, day.PartTwo(realInputValues));
+            var partTwo = day.PartTwo(realInputValues);
+            Output.WriteLine(ConsoleColor.Red, partTwo);
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
             //Present back to main window
-            Program.BackToMain();
+
+            //Keep console open untill any value is returned
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+            ShowMenu();
+
+            void ShowMenu()
+            {
+                var menu = new Menu()
+                    .Add("Copy part one", () => CopyAndMenu(partOne))
+                    .Add("Copy part two", () => CopyAndMenu(partTwo))
+                    .Add("Back to main", () => Main());
+                menu.Display();
+            }
+
+            void CopyAndMenu(string copy)
+            {
+                Console.WriteLine("");
+                Console.WriteLine($"Writing {copy} to clipboard.");
+                Console.WriteLine("");
+                ClipboardService.SetText(copy);
+                ShowMenu();
+            }
         }
         
     }
