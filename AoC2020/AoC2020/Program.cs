@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AoC2020.Days;
-using EasyConsole;
+using EasyConsoleCore;
 
 namespace AoC2020
 {
@@ -22,7 +22,7 @@ namespace AoC2020
             Console.WriteLine("by André K.");
             Console.WriteLine("");
 
-            var menu = new EasyConsole.Menu()
+            var menu = new Menu()
                 .Add("Day 1", () => program.ExecuteDay(new Day1(), 1))
                 .Add("Day 2", () => program.ExecuteDay(new Day2(), 2))
                 .Add("Day 3", () => program.ExecuteDay(new Day3(), 3));

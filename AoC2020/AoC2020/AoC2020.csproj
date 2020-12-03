@@ -13,6 +13,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EasyConsoleCore" Version="1.0.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
@@ -26,8 +27,5 @@
     <Content Include="Input\Day2_RealData.txt" />
     <Content Include="Input\Day3_RealData.txt" />
     <Content Include="Input\Day3_TestData.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="EasyConsole" Version="1.1.0" />
   </ItemGroup>
 </Project>
