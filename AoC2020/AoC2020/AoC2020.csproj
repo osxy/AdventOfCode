@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AoC2020</RootNamespace>
     <AssemblyName>AoC2020</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -68,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Days\Day1.cs" />
     <Compile Include="Days\Day2.cs" />
+    <Compile Include="Days\Day3.cs" />
     <Compile Include="Days\Framework.cs" />
     <Compile Include="Helpers\ArraysAndLists.cs" />
     <Compile Include="Helpers\General.cs" />
