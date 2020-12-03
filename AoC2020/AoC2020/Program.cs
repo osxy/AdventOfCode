@@ -25,9 +25,9 @@ namespace AoC2020
             var menu = new Menu()
                 .Add("Day 1", () => program.ExecuteDay(new Day1(), 1))
                 .Add("Day 2", () => program.ExecuteDay(new Day2(), 2))
-                .Add("Day 3", () => program.ExecuteDay(new Day3(), 3));
+                .Add("Day 3", () => program.ExecuteDay(new Day3(), 3))
+                .Add("Exit", () => Environment.Exit(0));
             menu.Display();
-
         }
 
         public static void BackToMain()
@@ -59,7 +59,7 @@ namespace AoC2020
             Console.WriteLine($"Day {daynr} - Part One");
             watch.Restart();
             Console.Write("Answer: ");
-            Console.WriteLine(day.PartOne(realInputValues));
+            Output.WriteLine(ConsoleColor.Red, day.PartOne(realInputValues));
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
@@ -68,7 +68,7 @@ namespace AoC2020
             Console.WriteLine($"Day {daynr} - Part Two");
             watch.Restart();
             Console.Write("Answer: ");
-            Console.WriteLine(day.PartTwo(realInputValues));
+            Output.WriteLine(ConsoleColor.Red, day.PartTwo(realInputValues));
             watch.Stop();
             Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
 
