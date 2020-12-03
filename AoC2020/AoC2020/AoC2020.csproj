@@ -88,6 +88,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Input\Day2_RealData.txt" />
+    <Content Include="Input\Day3_RealData.txt" />
+    <Content Include="Input\Day3_TestData.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
