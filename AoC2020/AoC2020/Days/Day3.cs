@@ -40,18 +40,10 @@
             var lineLength = input[y].Length;
             while (y < input.Length - 1)
             {
-                if (x + right > lineLength - 1)
-                {
-                    x = right - (lineLength - x);
-                }
-                else
-                {
-                    x += right;
-                }
-
+                x += right;
                 y += down;
 
-                if (input[y][x] == '#')
+                if (input[y][x % lineLength] == '#')
                 {
                     trees++;
                 }
