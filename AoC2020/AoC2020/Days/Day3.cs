@@ -16,9 +16,9 @@ namespace AoC2020.Days
             return ExecutePartOne(input).ToString();
         }
 
-        public static int ExecutePartTwo(string[] input)
+        public static long ExecutePartTwo(string[] input)
         {
-            var result = 1;
+            long result = 1;
             result *= SlopeRunner(input, 1, 1);
             result *= SlopeRunner(input, 3, 1);
             result *= SlopeRunner(input, 5, 1);
