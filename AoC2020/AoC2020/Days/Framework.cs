@@ -1,85 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AoC2020.Days
+﻿namespace AoC2020.Days
 {
 
-    public class Framework
+    public class Framework : IDays
     {
-
-        public static void Execute()
+        
+        string IDays.PartTwo(string[] input)
         {
-
-            var day = 2;
-
-            //Input filenames
-            string realInputFile = $"Day{day}_RealData.txt";
-
-            //Get input contents
-            var realInputValues = Helpers.General.GetDataFromInputFile(realInputFile);
-
-
-            // Do JIT compilation
-            Console.Clear();
-            Console.WriteLine("Start JIT compilation");
-            PartOne(realInputValues);
-            PartTwo(realInputValues);
-            Console.Clear();
-
-            Stopwatch watch = Stopwatch.StartNew();
-            Console.WriteLine($"Start work on Day {day}");
-            Console.WriteLine("");
-            Console.WriteLine($"Day {day} - Part One");
-            watch.Restart();
-            Console.Write("Answer: ");
-            PartOne(realInputValues);
-            watch.Stop();
-            Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
-
-            Console.WriteLine("");
-
-            Console.WriteLine($"Day {day} - Part Two");
-            watch.Restart();
-            Console.Write("Answer: ");
-            PartTwo(realInputValues);
-            watch.Stop();
-            Console.WriteLine($"Done in: {watch.Elapsed.TotalMilliseconds}ms");
-
-            //Present back to main window
-            Program.BackToMain();
-
+            return ExecutePartTwo(input).ToString();
         }
 
-        public static void PartOne(string[] input)
+        string IDays.PartOne(string[] input)
         {
-
-            Console.WriteLine(ExecutePartOne(input));
-
+            return ExecutePartOne(input).ToString();
         }
 
-        public static void PartTwo(string[] input)
-        {
 
-            Console.WriteLine(ExecutePartTwo(input));
-
-        }
-
-        public static int ExecutePartTwo(string[] input)
+        public int ExecutePartTwo(string[] input)
         {
             return 0;
         }
 
-        public static int ExecutePartOne(string[] input)
+        public int ExecutePartOne(string[] input)
         {
 
             return 0;
         }
-
-
 
     }
 
