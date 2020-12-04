@@ -81,8 +81,6 @@ namespace AoC2020.Days
                  CheckHairColor(hcl) &&
                  CheckEyeColor(ecl) &&
                  CorrectNumberOfDigits(pid, 9));
-
-
         }
 
         public static bool StringNotNullAndBetweenValues(string input, int from, int to)
@@ -98,7 +96,6 @@ namespace AoC2020.Days
             {
                 case "cm":
                 {
-                    ;
                     return int.TryParse(input[0..^2], out int height) && height >= 150 && height <= 193;
                 }
                 case "in":
