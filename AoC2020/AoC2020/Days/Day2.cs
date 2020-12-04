@@ -9,20 +9,20 @@ namespace AoC2020.Days
     {
 
 
-        string IDays.PartTwo(string[] input)
+        string IDays.PartTwo(string input)
         {
             return ExecutePartTwo(input).ToString();
         }
 
-        string IDays.PartOne(string[] input)
+        string IDays.PartOne(string input)
         {
             return ExecutePartOne(input).ToString();
         }
 
 
-        public static int ExecutePartTwo(string[] input)
+        public static int ExecutePartTwo(string inputFile)
         {
-
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             int validPasswords = 0;
             var passwordMatch = new Regex("(?<positionOne>\\d+)-(?<positionTwo>\\d+) (?<mandatoryLetter>.): (?<password>.*)", RegexOptions.Compiled);
             foreach (string i in input)
@@ -42,8 +42,9 @@ namespace AoC2020.Days
             return validPasswords;
         }
 
-        public static int ExecutePartOne(string[] input)
+        public static int ExecutePartOne(string inputFile)
         {
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             int validPasswords = 0;
             var passwordMatch = new Regex("(?<positionOne>\\d+)-(?<positionTwo>\\d+) (?<mandatoryLetter>.): (?<password>.*)", RegexOptions.Compiled);
             foreach (string i in input)

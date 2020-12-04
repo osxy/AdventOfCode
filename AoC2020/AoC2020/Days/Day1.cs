@@ -8,19 +8,20 @@ namespace AoC2020.Days
     {
 
 
-        string IDays.PartTwo(string[] input)
+        string IDays.PartTwo(string input)
         {
             return ExecutePartTwo(input).ToString();
         }
 
-        string IDays.PartOne(string[] input)
+        string IDays.PartOne(string input)
         {
             return ExecutePartOne(input).ToString();
         }
 
 
-        public static int ExecutePartTwo(string[] input)
+        public static int ExecutePartTwo(string inputFile)
         {
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             var array = ArraysAndLists.StringArrayToIntArray(input);
 
             foreach (int current in array)
@@ -41,8 +42,9 @@ namespace AoC2020.Days
             return 0;
         }
 
-        public static int ExecutePartOne(string[] input)
+        public static int ExecutePartOne(string inputFile)
         {
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             var array = Helpers.ArraysAndLists.StringArrayToIntArray(input);
             foreach(int current in array)
             {

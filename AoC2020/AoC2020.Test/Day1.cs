@@ -5,13 +5,13 @@ namespace AoC2020.Test
 {
     public class Day1
     {
-        private string[] testData;
+        private string testData;
         private IDays _day;
 
         [SetUp]
         public void Setup()
         {
-            testData = Helpers.General.GetDataFromInputFile("Day1_TestData.txt");
+            testData = "Day1_TestData.txt";
             _day = new Days.Day1();
         }
 

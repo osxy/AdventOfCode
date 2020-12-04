@@ -6,18 +6,19 @@ namespace AoC2020.Days
     public class Day3 : IDays
     {
 
-        string IDays.PartTwo(string[] input)
+        string IDays.PartTwo(string input)
         {
             return ExecutePartTwo(input).ToString();
         }
 
-        string IDays.PartOne(string[] input)
+        string IDays.PartOne(string input)
         {
             return ExecutePartOne(input).ToString();
         }
 
-        public static long ExecutePartTwo(string[] input)
+        public static long ExecutePartTwo(string inputFile)
         {
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             long result = 1;
             result *= SlopeRunner(input, 1, 1);
             result *= SlopeRunner(input, 3, 1);
@@ -28,8 +29,9 @@ namespace AoC2020.Days
             return result;
         }
 
-        public static int ExecutePartOne(string[] input)
+        public static int ExecutePartOne(string inputFile)
         {
+            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             var trees = SlopeRunner(input, 3, 1);
             return trees;
         }

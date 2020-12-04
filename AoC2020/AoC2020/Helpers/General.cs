@@ -7,15 +7,12 @@ namespace AoC2020.Helpers
     public class General
     {
 
-        static public string[] GetDataFromInputFile(string filename)
+        static public string[] GetDataFromInputFileAsStringArray(string filename)
         {
 
-            //var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            //var filelocation = Path.Combine(projectFolder, @"Input\", filename);
             var filelocation = Path.Combine(@"Input\", filename);
 
             string[] lines = System.IO.File.ReadAllLines(filelocation);
-
 
             return lines;
 
@@ -24,12 +21,9 @@ namespace AoC2020.Helpers
         static public string GetDataFromInputFileAsString(string filename)
         {
 
-            //var projectFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
-            //var filelocation = Path.Combine(projectFolder, @"Input\", filename);
             var filelocation = Path.Combine(@"Input\", filename);
 
             string contents = System.IO.File.ReadAllText(filelocation);
-
 
             return contents;
 
