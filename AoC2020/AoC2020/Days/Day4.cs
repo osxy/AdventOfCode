@@ -87,24 +87,23 @@ namespace AoC2020.Days
 
         public static bool StringNotNullAndBetweenValues(string input, int from, int to)
         {
-            return input != null && int.Parse(input) >= from && int.Parse(input) <= to;
+            return int.TryParse(input, out int number) && number >= from && number <= to;
         }
 
         public static bool CheckHeight(string input)
         {
             if (input == null || input.Length < 4) return false;
 
-            switch (input.Substring(input.Length - 2))
+            switch (input[^2..])
             {
                 case "cm":
                 {
-                    var height = int.Parse(input.Substring(0, input.Length - 2));
-                    return height >= 150 && height <= 193;
+                    ;
+                    return int.TryParse(input[0..^2], out int height) && height >= 150 && height <= 193;
                 }
                 case "in":
                 {
-                    var height = int.Parse(input.Substring(0, input.Length - 2));
-                    return height >= 59 && height <= 76;
+                    return int.TryParse(input[0..^2], out int height) && height >= 59 && height <= 76;
                 }
                 default:
                     return false;
@@ -114,7 +113,7 @@ namespace AoC2020.Days
         public static bool CheckHairColor(string input)
         {
             var hairColorParser = new Regex("(\\#[0-9a-f]{6})", RegexOptions.Compiled);
-            return hairColorParser.Match(input).Success;
+            return input != null && input.Length == 7 && hairColorParser.Match(input).Success;
         }
 
         public static bool CheckEyeColor(string input)
@@ -124,15 +123,12 @@ namespace AoC2020.Days
             {
                 return false;
             }
-
             return validColors.Contains(input);
-
-
         }
 
         public static bool CorrectNumberOfDigits(string input, int correctNumber)
         {
-            return input != null && input.Count(char.IsDigit) == correctNumber;
+            return input != null && input.Length == 9 && input.Count(char.IsDigit) == correctNumber;
         }
     }
 
