@@ -60,8 +60,7 @@ namespace AoC2020.Days
             return parsedPassportArray;
         }
 
-
-        public class Passport
+        private class Passport
         {
             public string byr { get; set; }
             public string iyr { get; set; }
@@ -109,7 +108,7 @@ namespace AoC2020.Days
 
         public static bool CheckHairColor(string input)
         {
-            var hairColorParser = new Regex("(\\#[0-9a-f]{6})", RegexOptions.Compiled);
+            var hairColorParser = new Regex("(\\#[0-9a-f]{6})");
             return input != null && input.Length == 7 && hairColorParser.Match(input).Success;
         }
 
