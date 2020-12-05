@@ -24,15 +24,12 @@ namespace AoC2020.Days
             var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
             var seatList = CreateSeatList(input);
 
-            foreach(int seat in seatList)
-            {
-                if(!seatList.Contains(seat+1) && seatList.Contains(seat + 2))
-                {
-                    return seat + 1;
-                }
-            }
+            var sumOfList = seatList.Sum();
+            var max = seatList.Max();
+            var min = seatList.Min();
+            var sumOfAll = max * (max + 1) / 2 - min * (min - 1) / 2;
 
-            return 0;
+            return sumOfAll - sumOfList;
         }
 
         public int ExecutePartOne(string inputFile)
