@@ -31,5 +31,13 @@ namespace AoC2020.Test
             Assert.AreEqual(expectedResult, result);
         }
 
+        [TestCase("592")]
+        public void Test2(string expectedResult)
+        {
+            testData = "Day5_RealData.txt";
+            var result = _day.PartTwo(testData);
+            Assert.AreEqual(expectedResult, result);
+        }
+
     }
 }
