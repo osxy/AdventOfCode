@@ -56,8 +56,8 @@ namespace AoC2020.Days
         public static int SeatIdParser(string seatString)
         {
             seatString = seatString.ToUpper();
-            var rowBinary = seatString.Substring(0, 7).Replace("F", "0").Replace("B", "1");
-            var columnBinary = seatString.Substring(7, 3).Replace("L", "0").Replace("R", "1");
+            var rowBinary = seatString[..^3].Replace("F", "0").Replace("B", "1");
+            var columnBinary = seatString[^3..].Replace("L", "0").Replace("R", "1");
             var row = Convert.ToInt32(rowBinary, 2);
             var column = Convert.ToInt32(columnBinary, 2);
 
