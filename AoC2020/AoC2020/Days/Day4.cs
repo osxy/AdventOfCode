@@ -95,11 +95,11 @@ namespace AoC2020.Days
             {
                 case "cm":
                 {
-                    return int.TryParse(input[0..^2], out int height) && height >= 150 && height <= 193;
+                    return int.TryParse(input[0..^2], out int height) && height is >= 150 and <= 193;
                 }
                 case "in":
                 {
-                    return int.TryParse(input[0..^2], out int height) && height >= 59 && height <= 76;
+                    return int.TryParse(input[0..^2], out int height) && height is >= 59 and <= 76;
                 }
                 default:
                     return false;
@@ -112,20 +112,9 @@ namespace AoC2020.Days
             return input != null && input.Length == 7 && hairColorParser.Match(input).Success;
         }
 
-        public static bool CheckEyeColor(string input)
-        {
-            string[] validColors = { "amb", "blu", "brn", "grn", "hzl", "oth", "gry"};
-            if (input == null || input.Length != 3)
-            {
-                return false;
-            }
-            return validColors.Contains(input);
-        }
+        public static bool CheckEyeColor(string input) => input is "amb" or "blu" or "brn" or "grn" or "hzl" or "oth" or "gry";
 
-        public static bool CorrectNumberOfDigits(string input, int correctNumber)
-        {
-            return input != null && input.Length == 9 && input.Count(char.IsDigit) == correctNumber;
-        }
+        public static bool CorrectNumberOfDigits(string input, int correctNumber) => input?.Length == 9 && input.All(char.IsDigit);
     }
 
 
