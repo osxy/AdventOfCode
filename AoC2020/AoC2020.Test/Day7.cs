@@ -22,8 +22,9 @@ namespace AoC2020.Test
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("6")]
-        public void Test2(string expectedResult)
+        [TestCase("32", "Day7_TestData.txt")]
+        [TestCase("126", "Day7_TestData2.txt")]
+        public void Test2(string expectedResult, string testData)
         {
             var result = _day.PartTwo(testData);
             Assert.AreEqual(expectedResult, result);
