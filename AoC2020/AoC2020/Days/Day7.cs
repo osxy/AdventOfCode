@@ -76,26 +76,29 @@ namespace AoC2020.Days
             return totalList.Select(x => x.Container).Distinct().Count();
         }
 
-        private List<Bags> GenerateBagList(string[] input)
+        private List<Bags> GenerateBagList(string[] input = null)
         {
+            if(input == null && _bagList != null) return _bagList;
             var bagRules = new List<Bags>();
-            var bagRuleParser = new Regex("( ?(\\d) ?([a-z ]*)(?:bags|bag))", RegexOptions.Compiled);
+            var bagRuleParser = new Regex("(?:(.*) bags(?: contain ))?( ?(\\d) ?([a-z ]*)(?: bags| bag))", RegexOptions.Compiled);
 
             // All bags in array with their name and a list of what they can contain
             foreach (var bag in input)
             {
-                var bagSplit = bag.Split(" contain ");
-                var bagsParsed = bagRuleParser.Matches(bagSplit[1]);
-
-                foreach (Match bagParsed in bagsParsed)
+                var bags = bagRuleParser.Matches(bag);
+                if (bags.Count > 0)
                 {
-                    var bagInRule = new Bags()
+                    var container = bags[0].Groups[1].Value;
+                    foreach (Match bagParsed in bags)
                     {
-                        Container = bagSplit[0].ToString().Trim()[..^5],
-                        Bag = bagParsed.Groups[3].Value.Trim(),
-                        NumberOfBags = StringsAndInts.ConvertStringToInt(bagParsed.Groups[2].Value)
-                    };
-                    bagRules.Add(bagInRule);
+                        var bagInRule = new Bags()
+                        {
+                            Container = container,
+                            Bag = bagParsed.Groups[4].Value,
+                            NumberOfBags = StringsAndInts.ConvertStringToInt(bagParsed.Groups[3].Value)
+                        };
+                        bagRules.Add(bagInRule);
+                    }
                 }
             }
 
