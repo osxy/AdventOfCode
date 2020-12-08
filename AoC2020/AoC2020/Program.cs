@@ -31,6 +31,7 @@ namespace AoC2020
                 .Add("Day 5", () => program.ExecuteDay(new Day5(), 5))
                 .Add("Day 6", () => program.ExecuteDay(new Day6(), 6))
                 .Add("Day 7", () => program.ExecuteDay(new Day7(), 7))
+                .Add("Day 8", () => program.ExecuteDay(new Day8(), 8))
                 .Add("Exit", () => Environment.Exit(0));
             menu.Display();
         }
