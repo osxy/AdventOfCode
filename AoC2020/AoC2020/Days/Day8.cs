@@ -22,7 +22,6 @@ namespace AoC2020.Days
         public int ExecutePartTwo(string inputFile)
         {
             var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
-            List<string> replacedList;
             var replaceList = new string[] { "nop", "jmp" };
             var replace = (from i in input
                        where replaceList.Contains(i[0..3])
@@ -34,15 +33,8 @@ namespace AoC2020.Days
             do
             {
                 var replaceItem = 0;
-                replacedList = input.ToList();
-                try
-                {
-                    replaceItem = replace[replaceIndex];
-                } catch
-                {
-                    solved = new Tuple<int,bool>(-9999, true);
-                    break;
-                }
+                var replacedList = input.ToList();
+                replaceItem = replace[replaceIndex];
                 switch (replacedList[replaceItem][0..3])
                 {
                     case "nop":
@@ -55,8 +47,6 @@ namespace AoC2020.Days
                 replaceIndex++;
                 solved = Solver(replacedList.ToArray());
                 repeated = solved.Item2;
-
-
 
             } while (repeated == true);
 
@@ -100,7 +90,7 @@ namespace AoC2020.Days
                 } while (!repeated && index <= input.Length-1);
 
                 return new Tuple<int, bool>(decimal.ToInt32(acc), repeated);
-            } catch(Exception e)
+            } catch
             {
                 return new Tuple<int, bool>(0, true);
             }
