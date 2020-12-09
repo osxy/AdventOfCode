@@ -37,6 +37,12 @@ namespace AoC2020.Helpers
             return Array.ConvertAll(values, int.Parse);
         }
 
+        // Zet String[] om in int[]
+        // Output: String[]
+        public static long[] StringArrayToLongArray(string[] values)
+        {
+            return Array.ConvertAll(values, long.Parse);
+        }
 
     }
 }

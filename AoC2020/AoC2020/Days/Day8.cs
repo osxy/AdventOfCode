@@ -55,9 +55,6 @@ namespace AoC2020.Days
                 replaceIndex++;
                 solved = Solver(replacedList.ToArray());
                 repeated = solved.Item2;
-
-
-
             } while (repeated == true);
 
 
