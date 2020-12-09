@@ -34,7 +34,7 @@ namespace AoC2020.Days
                     var sum = list.Take(numberOfRecords).Sum();
                     if (sum == lookForNumber)
                     {
-                        return list.Take(numberOfRecords).OrderBy(x=>x).Take(1).Single() + list.Take(numberOfRecords).OrderBy(x => x).TakeLast(1).Single();
+                        return list.Take(numberOfRecords).Min() + list.Take(numberOfRecords).Max();
                     } else if (sum > lookForNumber)
                     {
                         break;
