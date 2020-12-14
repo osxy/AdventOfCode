@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AoC2020.Test
 {
-    public class Day9
+    public class Day12
     {
         private string testData;
         private IDays _day;
@@ -11,14 +11,14 @@ namespace AoC2020.Test
         [SetUp]
         public void Setup()
         {
-            testData = "Day9_TestData.txt";
-            _day = new Days.Day9();
+            testData = "Day12_TestData.txt";
+            _day = new Days.Day12();
         }
 
-        [TestCase(127)]
-        public void Test1(int expectedResult)
+        [TestCase("25")]
+        public void Test1(string expectedResult)
         {
-            var result = new Days.Day9().ExecutePartOne(testData, 5);
+            var result = _day.PartOne(testData);
             Assert.AreEqual(expectedResult, result);
         }
 
