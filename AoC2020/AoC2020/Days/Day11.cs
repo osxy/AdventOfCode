@@ -45,7 +45,7 @@ namespace AoC2020.Days
 
             }
 
-            seatsOccupied = seatInfo.Count(seat => seat.State == 2);
+            seatsOccupied = seatInfo.Count(seat => seat.State == SeatInfo.SeatState.occupied);
 
 
             return seatsOccupied;
@@ -79,20 +79,20 @@ namespace AoC2020.Days
                     yMin = seat.Y - 1;
                     yMax = seat.Y + 1;
 
-                    nrOfSeatsAdjacentOccupied = seatInfo.Count(s => s.X <= xMax && s.X >= xMin && s.Y <= yMax && s.Y >= yMin && s.State == 2);
+                    nrOfSeatsAdjacentOccupied = seatInfo.Count(s => s.X <= xMax && s.X >= xMin && s.Y <= yMax && s.Y >= yMin && s.State == SeatInfo.SeatState.occupied);
 
                     //If seat is empty and No occupied seats adjacent to it ==> Seat becomes occupied
-                    if (seat.State == 1 && nrOfSeatsAdjacentOccupied == 0)
+                    if (seat.State == SeatInfo.SeatState.empty && nrOfSeatsAdjacentOccupied == 0)
                     {
                         layoutChanged = true;
-                        newSeat.State = 2;
+                        newSeat.State = SeatInfo.SeatState.occupied;
                     }
 
                     //If seat is occupied  and 4 or more seats adjacent to it are occupied ==> Seat becomes empty
-                    if (seat.State == 2 && nrOfSeatsAdjacentOccupied > 4) //Included this seat so no >=
+                    if (seat.State == SeatInfo.SeatState.occupied && nrOfSeatsAdjacentOccupied > 4) //Included this seat so no >=
                     {
                         layoutChanged = true;
-                        newSeat.State = 1;
+                        newSeat.State = SeatInfo.SeatState.empty;
                     }
                 }
                 newSeatInfo.Add(newSeat);
@@ -106,7 +106,7 @@ namespace AoC2020.Days
             List<SeatInfo> seatInfo = new List<SeatInfo>();
             int x = 0;
             int y = 0;
-            int state;
+            SeatInfo.SeatState state;
             SeatInfo oneSeat = new SeatInfo();
 
             //Convert input to array of integers.
@@ -120,18 +120,18 @@ namespace AoC2020.Days
                     switch (seat)
                     {
                         case '.':
-                            state = 0;
+                            state = SeatInfo.SeatState.floor;
                             break;
 
                         case 'L':
-                            state = 1;
+                            state = SeatInfo.SeatState.empty;
                             break;
                         case '#':
-                            state = 2;
+                            state = SeatInfo.SeatState.occupied;
                             break;
 
                         default:
-                            state = 999;
+                            state = SeatInfo.SeatState.unknown;
                             break;
                     }
 
@@ -155,8 +155,18 @@ namespace AoC2020.Days
         {
             public int X;
             public int Y;
-            public int State; //0 = floor, 1 = empty seat, 2 = occupied seat 
+            public SeatState State; 
+
+            public enum SeatState
+            {
+                floor,
+                empty,
+                occupied,
+                unknown = 999
+            }
         }
+
+
 
     }
 }
