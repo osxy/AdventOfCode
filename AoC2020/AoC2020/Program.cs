@@ -33,6 +33,7 @@ namespace AoC2020
                 .Add("Day 7", () => program.ExecuteDay(new Day7(), 7))
                 .Add("Day 8", () => program.ExecuteDay(new Day8(), 8))
                 .Add("Day 9", () => program.ExecuteDay(new Day9(), 9))
+                .Add("Day 10", () => program.ExecuteDay(new Day10(), 10))
                 .Add("Day 11", () => program.ExecuteDay(new Day11(), 11))
                 .Add("Day 12", () => program.ExecuteDay(new Day12(), 12))
                 .Add("Exit", () => Environment.Exit(0));
@@ -45,8 +46,8 @@ namespace AoC2020
             // Do JIT compilation
             Console.Clear();
             Console.WriteLine("Start JIT compilation");
-            //day.PartOne(realInputFile);
-            //day.PartTwo(realInputFile);
+            day.PartOne(realInputFile);
+            day.PartTwo(realInputFile);
             Console.Clear();
 
             Stopwatch watch = Stopwatch.StartNew();

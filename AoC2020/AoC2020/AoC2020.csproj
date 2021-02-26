@@ -27,6 +27,9 @@
     <None Remove="Input\Day11_TestData.txt" />
     <None Remove="Input\Day12_RealData.txt" />
     <None Remove="Input\Day12_TestData.txt" />
+    <None Remove="Input\Day10_RealData.txt" />
+    <None Remove="Input\Day10_TestData1.txt" />
+    <None Remove="Input\Day10_TestData2.txt" />
     <None Remove="Input\Day4_RealData.txt" />
     <None Remove="Input\Day4_TestData.txt" />
     <None Remove="Input\Day4_TestData2.txt" />
