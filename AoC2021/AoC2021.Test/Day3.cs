@@ -22,7 +22,7 @@ namespace AoC2021.Test
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("900")]
+        [TestCase("230")]
         public void Test2(string expectedResult)
         {
             var result = _day.PartTwo(testData);
