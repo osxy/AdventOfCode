@@ -21,12 +21,11 @@ namespace AoC2022.Days
 
         public static int ExecutePartTwo(string inputFile)
         {
-            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
-            var array = Helpers.ArraysAndLists.StringArrayToIntArray(input);
+            var input = Helpers.General.GetDataFromInputFileAsString(inputFile);
+            input = input.Replace(System.Environment.NewLine, "\r\n");
+            var array = Helpers.ArraysAndLists.StringToIntArray(input, '\n');
 
-            var higherThenPrevious = array.Take(array.Length-2).Select((item, index) => new { index, item }).Select(x => new {item = x.item, index = x.index, sum = (x.item + array[x.index +1] + array[x.index + 2])}).ToArray();
-
-            return higherThenPrevious.Skip(1).Where(x => x.sum > higherThenPrevious[x.index - 1].sum).Count();
+            return 0;
         }
 
         public static int ExecutePartOne(string inputFile)
