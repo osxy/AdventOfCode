@@ -26,6 +26,7 @@ namespace AoC2022
             var menu = new Menu()
                 .Add("Day 1", () => program.ExecuteDay(new Day1(), 1))
                 .Add("Day 2", () => program.ExecuteDay(new Day2(), 2))
+                .Add("Day 3", () => program.ExecuteDay(new Day3(), 3))
                 .Add("Exit", () => Environment.Exit(0));
             menu.Display();
         }
@@ -33,11 +34,12 @@ namespace AoC2022
         public void ExecuteDay(IDays day, int daynr)
         {
             var realInputFile = $"Day{daynr}_RealData.txt";
+            var testInputFile = $"Day{daynr}_TestData.txt";
             // Do JIT compilation
             Console.Clear();
             Console.WriteLine("Start JIT compilation");
-            day.PartOne(realInputFile);
-            day.PartTwo(realInputFile);
+            day.PartOne(testInputFile);
+            day.PartTwo(testInputFile);
             Console.Clear();
 
             Stopwatch watch = Stopwatch.StartNew();
