@@ -25,6 +25,7 @@ namespace AoC2022
 
             var menu = new Menu()
                 .Add("Day 1", () => program.ExecuteDay(new Day1(), 1))
+                .Add("Day 2", () => program.ExecuteDay(new Day2(), 2))
                 .Add("Exit", () => Environment.Exit(0));
             menu.Display();
         }
