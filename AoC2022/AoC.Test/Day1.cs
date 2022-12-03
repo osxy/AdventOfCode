@@ -15,14 +15,14 @@ namespace AoC2022.Test
             _day = new Days.Day1();
         }
 
-        [TestCase("7")]
+        [TestCase("24000")]
         public void Test1(string expectedResult)
         {
             var result = _day.PartOne(testData);
             Assert.AreEqual(expectedResult, result);
         }
 
-        [TestCase("5")]
+        [TestCase("45000")]
         public void Test2(string expectedResult)
         {
             var result = _day.PartTwo(testData);

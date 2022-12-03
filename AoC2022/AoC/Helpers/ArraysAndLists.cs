@@ -18,14 +18,14 @@ namespace AoC2022.Helpers
 
         // Zet String om in String[]
         // Output: String[]
-        public static String[] StringToStringArray(string value, char delimiter)
+        public static String[] StringToStringArray(string value, string delimiter)
         {
             return value.Split(delimiter);
         }
 
         // Zet String om in String[]
         // Output: String[]
-        public static int[] StringToIntArray(string value, char delimiter)
+        public static int[] StringToIntArray(string value, string delimiter)
         {
             return Array.ConvertAll(StringToStringArray(value, delimiter), int.Parse);
         }
