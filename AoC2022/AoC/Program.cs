@@ -27,6 +27,7 @@ namespace AoC2022
                 .Add("Day 1", () => program.ExecuteDay(new Day1(), 1))
                 .Add("Day 2", () => program.ExecuteDay(new Day2(), 2))
                 .Add("Day 3", () => program.ExecuteDay(new Day3(), 3))
+                .Add("Day 4", () => program.ExecuteDay(new Day4(), 4))
                 .Add("Exit", () => Environment.Exit(0));
             menu.Display();
         }
