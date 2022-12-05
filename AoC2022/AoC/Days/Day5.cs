@@ -41,10 +41,27 @@ namespace AoC2022.Days
             return topCrates;
         }
 
-        public int ExecutePartTwo(string inputFile)
+        public string ExecutePartTwo(string inputFile)
         {
             var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
-            return 0;
+            var parsedInput = ParseInput(input);
+            var parsedInstructions = parsedInput.ParsedInstructions;
+            var parsedGrid = parsedInput.StartingGrid;
+
+            foreach (var instruction in parsedInstructions)
+            {
+                var cratesToMove = parsedGrid[instruction.moveFrom].Take(instruction.moveAmount);
+                parsedGrid[instruction.moveTo].InsertRange(0, cratesToMove);
+                parsedGrid[instruction.moveFrom] = parsedGrid[instruction.moveFrom].TakeLast(parsedGrid[instruction.moveFrom].Count - instruction.moveAmount).ToList();
+            }
+
+            string topCrates = "";
+            foreach (var stack in parsedGrid)
+            {
+                topCrates = topCrates + stack.FirstOrDefault();
+            }
+
+            return topCrates;
         }
 
         public (List<char>[] StartingGrid, List<Instructions> ParsedInstructions) ParseInput(string[] inputLines)
