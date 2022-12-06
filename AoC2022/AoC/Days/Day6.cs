@@ -37,10 +37,10 @@ namespace AoC2022.Days
 
             do
             {
-                if(characters[x ..(x + markerLength)].Distinct().Count() == markerLength)
+                if(characters[x ..(x + markerLength)].Count() == markerLength)
                 {
                     markerPos = x + markerLength;
-                    break;
+                    return markerPos;
                 }
             } while (markerPos == -1 && x++ <= characters.Count());
 
