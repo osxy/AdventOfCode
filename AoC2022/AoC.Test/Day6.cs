@@ -14,20 +14,6 @@ namespace AoC2022.Test
             testData = "Day6_TestData.txt";
             _day = new Days.Day6();
         }
-
-        [TestCase("CMZ")]
-        public void Test1(string expectedResult)
-        {
-            var result = _day.PartOne(testData);
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [TestCase("MCD")]
-        public void Test2(string expectedResult)
-        {
-            var result = _day.PartTwo(testData);
-            Assert.AreEqual(expectedResult, result);
-        }
         
         [TestCase(7, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 4)]
         [TestCase(5, "bvwbjplbgvbhsrlpgdmjqwftvncz", 4)]
