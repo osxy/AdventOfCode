@@ -20,16 +20,16 @@ namespace AoC2022.Days
         public int ExecutePartOne(string inputFile)
         {
             var input = Helpers.General.GetDataFromInputFileAsString(inputFile);
-            return MarkerPosition(input);
+            return MarkerPosition(input, 4);
         }
 
         public int ExecutePartTwo(string inputFile)
         {
-            var input = Helpers.General.GetDataFromInputFileAsStringArray(inputFile);
-            return 0;
+            var input = Helpers.General.GetDataFromInputFileAsString(inputFile);
+            return MarkerPosition(input, 14);
         }
 
-        public static int MarkerPosition(string message)
+        public static int MarkerPosition(string message, int markerLength)
         {
             var characters = message.ToCharArray();
             int markerPos = -1;
@@ -38,9 +38,9 @@ namespace AoC2022.Days
             do
             {
 
-                if(characters[x ..(x + 4)].Distinct().Count() == 4)
+                if(characters[x ..(x + markerLength)].Distinct().Count() == markerLength)
                 {
-                    markerPos = x + 4;
+                    markerPos = x + markerLength;
                     break;
                 }
 

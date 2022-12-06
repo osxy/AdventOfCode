@@ -29,14 +29,19 @@ namespace AoC2022.Test
             Assert.AreEqual(expectedResult, result);
         }
         
-        [TestCase(7, "mjqjpqmgbljsphdztnvjfqwrcgsmlb")]
-        [TestCase(5, "bvwbjplbgvbhsrlpgdmjqwftvncz")]
-        [TestCase(6, "nppdvjthqldpwncqszvftbrmjlhg")]
-        [TestCase(10, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")]
-        [TestCase(11, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")]
-        public void MarkerPos(int expectedResult, string data)
+        [TestCase(7, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 4)]
+        [TestCase(5, "bvwbjplbgvbhsrlpgdmjqwftvncz", 4)]
+        [TestCase(6, "nppdvjthqldpwncqszvftbrmjlhg", 4)]
+        [TestCase(10, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 4)]
+        [TestCase(11, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 4)]
+        [TestCase(19, "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 14)]
+        [TestCase(23, "bvwbjplbgvbhsrlpgdmjqwftvncz", 14)]
+        [TestCase(23, "nppdvjthqldpwncqszvftbrmjlhg", 14)]
+        [TestCase(29, "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14)]
+        [TestCase(26, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14)]
+        public void MarkerPos(int expectedResult, string data, int markerLength)
         {
-            var result = Days.Day6.MarkerPosition(data);
+            var result = Days.Day6.MarkerPosition(data, markerLength);
             Assert.AreEqual(expectedResult, result);
         }
     }
