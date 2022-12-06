@@ -31,6 +31,8 @@
     <None Remove="Input\Day4_TestData.txt" />
     <None Remove="Input\Day5_RealData.txt" />
     <None Remove="Input\Day5_TestData.txt" />
+    <None Remove="Input\Day6_RealData.txt" />
+    <None Remove="Input\Day6_TestData.txt" />
     <Content Include="Input\Day1_TestData.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
